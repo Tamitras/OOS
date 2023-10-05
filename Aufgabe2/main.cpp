@@ -21,6 +21,18 @@ void add_new_head_element(int id)
 
 void add_new_tail_element(int id)
 {
+    ListElement* p_new_element = new ListElement();
+    p_new_element->id = id;
+    p_new_element->p_next = nullptr;
+    if (p_root == nullptr) {
+        p_root = p_new_element;
+    } else {
+        ListElement* p_tmp = p_root;
+        while (p_tmp->p_next != nullptr) {
+            p_tmp = p_tmp->p_next;
+        }
+        p_tmp->p_next = p_new_element;
+    }
     // HIER programmieren:
     // Neues listenElement erzeugen.
     // Ans Ende der Liste navigieren und neues listenElement anhängen.
@@ -52,6 +64,12 @@ void delete_element(int id)
 
 void print_list()
 {
+    ListElement* p_tmp = p_root;
+    while (p_tmp != nullptr) {
+        cout << p_tmp->id << endl;
+        p_tmp = p_tmp->p_next;
+    }
+    
     // Hier programmieren:
     // Die Liste durchlaufen und jeweils die id des listenElements ausgeben. 
 }
